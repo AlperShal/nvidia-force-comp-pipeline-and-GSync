@@ -4,7 +4,7 @@ A simple script that auto-enables "ForceCompositionPipeline", "ForceFullComposit
 
 ## The ForceCompositionPipeline mode
 
-### What is ForceCompositionPipeline ?
+### What is ForceCompositionPipeline?
 
 ForceCompositionPipeline is a special mode that can be enabled on monitors connected to Nvidia cards. It can be found in the Nvidia control panel : go to "X Server Display Configuration", select your monitor, click "Advanced".
 
@@ -12,7 +12,7 @@ ForceCompositionPipeline is a special mode that can be enabled on monitors conne
 
 ## Installation
 
-**NOTE From Forker:** This repo is forked from [nvidia-force-comp-pipeline](https://github.com/Askannz/nvidia-force-comp-pipeline) and only change that are made are editing README file, removing ".desktop" "PKGBUİLD" files and adding "ForceFullCompositionPipeline=On, AllowGSYNC=On" to line 39. So it enables all "ForceCompositionPipeline", "ForceFullCompositionPipeline" and "AllowGSYNC".
+**NOTE From Forker:** This repo is forked from [nvidia-force-comp-pipeline](https://github.com/Askannz/nvidia-force-comp-pipeline) and only change that are made are editing README file, removing ".desktop" "PKGBUILD" files and adding "ForceFullCompositionPipeline=On, AllowGSYNC=On" to line 39. So it enables all "ForceCompositionPipeline", "ForceFullCompositionPipeline" and "AllowGSYNC".
 
 To use this script;
 - Save "nvidia-force-comp-pipeline-and-GSync.py" to somewhere safe in your harddrive. You can do this by opening the file in GitHub, clicking "Raw" button and doing "Right-Click > Save As..." or cloning the repository using "git clone [repo_link]" and copying the file from clone path to wherever you'd like to.

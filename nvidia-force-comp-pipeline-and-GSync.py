@@ -36,7 +36,7 @@ def _get_current_metamode():
     return metamode
 
 def _add_force_comp_pipeline(metamode):
-    return metamode.replace("{", "{ForceCompositionPipeline=On, ")
+    return metamode.replace("{", "{ForceCompositionPipeline=On, ForceFullCompositionPipeline=On, AllowGSYNC=On, ")
 
 def _apply_metamode(metamode):
 

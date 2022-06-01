@@ -1,6 +1,6 @@
 # nvidia-force-comp-pipeline
 
-A simple script that auto-enables ForceCompositionPipeline on all monitors at startup.
+A simple script that auto-enables "ForceCompositionPipeline", "ForceFullCompositionPipeline" and "AllowGSYNC" on all monitors at startup.
 
 ## The ForceCompositionPipeline mode
 
@@ -10,32 +10,14 @@ ForceCompositionPipeline is a special mode that can be enabled on monitors conne
 
 ![Screenshot of the ForceCompositionPipeline option in the Nvidia control panel](screenshots/nvidia-settings.png)
 
-### What does it do and why is it necessary ?
-
-From my (limited) understanding, this mode forces all desktop compositing in Xorg to go through the general-purpose graphics pipeline of the Nvidia chip, instead of a dedicated engine dedicated to display.
-
-This Reddit comment (by an Nvidia developer) gives a more in-depth explanation : https://www.reddit.com/r/linux_gaming/comments/6voivr/can_anyone_explain_what_force_composition/dm1uz2j/
-
-The main advantage of enabling this mode on Linux is that it can solve tearing issues that are unfortunately pretty common with Nvidia cards. With KDE Plasma for example, I have never found a way to completely get rid of tearing on Nvidia without enabling ForceCompositionPipeline.
-
-### Is there any drawback to enabling it ?
-
-According to the Reddit comment linked above, this mode increases the strain on your GPU (since you are not using the hardware part dedicated to display), which may impact performance. I do not know if that also applies to fullscreen games, since compositing is theoretically disabled that case.
-
-It may also increase input lag, although there are conflicting reports on that point. If anyone has ever done a proper testing (with actual numbers) of input latency with that mode enabled, I would really like to know the results (qualitative reports such as "it feels more/less snappy" are not very useful since there is way to much room for placebo in the equation).
-
 ## Installation
 
-```
-git clone https://github.com/Askannz/nvidia-force-comp-pipeline
-cd nvidia-force-comp-pipeline/
-sudo cp nvidia-force-comp-pipeline /usr/bin/
-sudo cp nvidia-force-comp-pipeline.desktop /etc/xdg/autostart/
-```
+**NOTE From Forker:** This repo is forked from [nvidia-force-comp-pipeline](https://github.com/Askannz/nvidia-force-comp-pipeline) and only change that are made are editing README file, removing ".desktop" "PKGBUİLD" files and adding "ForceFullCompositionPipeline=On, AllowGSYNC=On" to line 39. So it enables all "ForceCompositionPipeline", "ForceFullCompositionPipeline" and "AllowGSYNC".
 
-Arch-based distributions can also use this AUR package : https://aur.archlinux.org/packages/nvidia-force-comp-pipeline/
-
-This should work on any desktop environment that follows the Freedesktop specifications. The script will be automatically launched at session startup.
+To use this script;
+- Save "nvidia-force-comp-pipeline-and-GSync.py" to somewhere safe in your harddrive. You can do this by opening the file in GitHub, clicking "Raw" button and doing "Right-Click > Save As..." or cloning the repository using "git clone [repo_link]" and copying the file from clone path to wherever you'd like to.
+- Open your operating system's Auto Start menu and add the script as a "Login Script". (Example for Manjaro KDE: Settings > Start and Shutdown > Autostart > Add > Add Login Script > Choose file path...)
+- That's all.
 
 ## Known issues
 
@@ -60,7 +42,4 @@ Replace 96 by your desired DPI value.
 
 ### Multiple Nvidia GPUs
 
-The script will probably not work on setups that have multiple monitors connected to different Nvidia GPUs. This is because it parses the output of `nvidia-settings` to get the current monitor metamode, and I have no idea what the format of that is with multiple GPUs.
-
- If you are in that situation, send me the output of the command `nvidia-settings -q CurrentMetaMode` on your machine and I'll update the script.
-
+The script will probably not work on setups that have multiple monitors connected to different Nvidia GPUs. This is because it parses the output of `nvidia-settings` to get the current monitor metamode.
